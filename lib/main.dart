@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:inter_ecoles_app/home.dart';
+import 'package:inter_ecoles_app/theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -34,11 +36,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        elevation: 0.0,
+        backgroundColor: drawerBackgroundColor,
+        title: Center(child: Text(widget.title)),
       ),
-      body: const Center(
-        child: Text("MIS"),
-      ),
+      body: Home(),
     );
   }
 }
