@@ -1,4 +1,4 @@
-class Gender {
-  static String dame = 'dame';
-  static String homme = 'homme';
+enum Gender {
+  homme,
+  dame,
 }
