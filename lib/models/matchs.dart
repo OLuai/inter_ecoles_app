@@ -24,7 +24,7 @@ class VolleyballMatchs extends Matchs {
     int period = 1,
     MatchStatus status = MatchStatus.waiting,
     Map<int, Map<String, int?>>? periodsScores,
-    int elapsedTime = 0,
+    int playedTime = 0,
   }) : super(
           id: id,
           roundId: roundId,
@@ -47,7 +47,7 @@ class VolleyballMatchs extends Matchs {
           periodsScores: _Utils.convertMap(json['periodsScores']!),
           status: _Utils.getStatus(json['status']! as String),
           period: json['period'] as int,
-          elapsedTime: json['elapsedTime'] as int,
+          playedTime: json['playedTime'] as int,
         );
 
   @override
@@ -87,7 +87,7 @@ class Matchs {
   int period;
   MatchStatus status;
   Map<int, Map<String, int?>>? periodsScores;
-  int elapsedTime;
+  int playedTime;
 
   Matchs({
     required this.id,
@@ -99,7 +99,7 @@ class Matchs {
     this.period = 1,
     this.status = MatchStatus.waiting,
     this.periodsScores,
-    this.elapsedTime = 0,
+    this.playedTime = 0,
   }) {
     sport = Sports.getSport(sportId);
     teamA = Schools.getSchool(teamAId);
@@ -124,7 +124,7 @@ class Matchs {
           periodsScores: _Utils.convertMap(json['periodsScores']!),
           status: _Utils.getStatus(json['status']! as String),
           period: json['period'] as int,
-          elapsedTime: json['elapsedTime'] as int,
+          playedTime: json['playedTime'] as int,
         );
 
   Map<String, Object?> toJson() {
@@ -139,7 +139,7 @@ class Matchs {
           (dynamic key, dynamic value) => MapEntry(key.toString(), value)),
       'status': status.toString(),
       'period': period,
-      'elapsedTime': elapsedTime,
+      'playedTime': playedTime,
     };
   }
 
