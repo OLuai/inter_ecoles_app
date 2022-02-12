@@ -64,6 +64,13 @@ flutter:
     - assets/images/handball.png
     - assets/images/volleyball.png
     - assets/images/sports.png
+    #Les Logos
+    - assets/logos/esi.png
+    - assets/logos/esmg.png
+    - assets/logos/esa.png
+    - assets/logos/escae.png
+    - assets/logos/ep.png
+    - assets/logos/estp.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
