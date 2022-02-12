@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 import 'package:inter_ecoles_app/models/school.dart';
 import 'package:inter_ecoles_app/models/sport.dart';
 
