@@ -22,12 +22,18 @@ class School {
 //Class faisant reference de maniere static
 //Aux principales ecoles
 class Schools {
-  static School esi = School(id: "ID_ESI", name: "ESI", logoUrl: "");
-  static School escae = School(id: "ID_ESCAE", name: "ESCAE", logoUrl: "");
-  static School ep = School(id: "ID_EP", name: "EP", logoUrl: "");
-  static School estp = School(id: "ID_ESTP", name: "ESTP", logoUrl: "");
-  static School esmg = School(id: "ID_ESMG", name: "ESMG", logoUrl: "");
-  static School esa = School(id: "ID_ESA", name: "ESA", logoUrl: "");
+  static School esi =
+      School(id: "ID_ESI", name: "ESI", logoUrl: "assets/logos/esi.png");
+  static School escae =
+      School(id: "ID_ESCAE", name: "ESCAE", logoUrl: "assets/logos/escae.png");
+  static School ep =
+      School(id: "ID_EP", name: "EP", logoUrl: "assets/logos/ep.png");
+  static School estp =
+      School(id: "ID_ESTP", name: "ESTP", logoUrl: "assets/logos/estp.png");
+  static School esmg =
+      School(id: "ID_ESMG", name: "ESMG", logoUrl: "assets/logos/esmg.png");
+  static School esa =
+      School(id: "ID_ESA", name: "ESA", logoUrl: "assets/logos/esa.png");
 
   static School getSchool(String id) {
     switch (id) {
