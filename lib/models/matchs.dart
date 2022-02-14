@@ -75,8 +75,8 @@ class VolleyballMatchs extends Matchs {
 }
 
 class Matchs {
-  final String roundId;
-  final String id;
+  final String roundId; // la journée démi-final
+  final String id; // l'identifiant du match
   late Sport sport;
   final String sportId;
   late School teamA;
@@ -84,10 +84,10 @@ class Matchs {
   late School teamB;
   final String teamBId;
   final Gender gender;
-  int period;
-  MatchStatus status;
+  int period; // les mi-temps
+  MatchStatus status; // le status du match enuméré en haut
   Map<int, Map<String, int?>>? periodsScores;
-  int elapsedTime;
+  int elapsedTime; // le temps écoulé
 
   Matchs({
     required this.id,
@@ -157,6 +157,13 @@ class Matchs {
     return score;
   }
 }
+
+List<Matchs> matchItems =[
+  Matchs(id: "0", roundId: "1", sportId: "ID_FOOTBALL", gender: Gender.homme, teamAId: "ID_ESI", teamBId: "ID_EP"),
+  Matchs(id: "1", roundId: "1", sportId: "ID_FOOTBALL", gender: Gender.dame, teamAId: "ID_ESCAE", teamBId: "ID_ESTP"),
+  Matchs(id: "2", roundId: "1", sportId: "ID_FOOTBALL", gender: Gender.homme, teamAId: "ID_ESA", teamBId: "ID_ESMG"),
+  Matchs(id: "3", roundId: "1", sportId: "ID_FOOTBALL", gender: Gender.dame, teamAId: "ID_ESI", teamBId: "ID_ESTP"),
+];
 
 class _Utils {
   static Map<int, Map<String, int?>> convertMap(dynamic map) {
