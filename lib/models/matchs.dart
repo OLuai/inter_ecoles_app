@@ -9,6 +9,15 @@ enum MatchStatus {
   pause,
   end,
 }
+String getMatchStatus(MatchStatus status){
+  switch(status) {
+    case MatchStatus.waiting: return "waiting";
+    case MatchStatus.pending: return "pending";
+    case MatchStatus.pause: return "pause";
+    case MatchStatus.end: return "end";
+    default : return "waiting";
+  }
+}
 
 //La maniere d'obtenir le score principal est different au volleyball
 //d'ou l'existance de cette sous classe pour permettre le redefinition
@@ -163,6 +172,14 @@ List<Matchs> matchItems =[
   Matchs(id: "1", roundId: "1", sportId: "ID_FOOTBALL", gender: Gender.dame, teamAId: "ID_ESCAE", teamBId: "ID_ESTP"),
   Matchs(id: "2", roundId: "1", sportId: "ID_FOOTBALL", gender: Gender.homme, teamAId: "ID_ESA", teamBId: "ID_ESMG"),
   Matchs(id: "3", roundId: "1", sportId: "ID_FOOTBALL", gender: Gender.dame, teamAId: "ID_ESI", teamBId: "ID_ESTP"),
+  Matchs(id: "4", roundId: "1", sportId: "ID_BASKETBALL", gender: Gender.homme, teamAId: "ID_ESI", teamBId: "ID_EP"),
+  Matchs(id: "5", roundId: "1", sportId: "ID_BASKETBALL", gender: Gender.dame, teamAId: "ID_ESCAE", teamBId: "ID_ESTP"),
+  Matchs(id: "6", roundId: "1", sportId: "ID_BASKETBALL", gender: Gender.homme, teamAId: "ID_ESA", teamBId: "ID_ESMG"),
+  Matchs(id: "7", roundId: "1", sportId: "ID_BASKETBALL", gender: Gender.dame, teamAId: "ID_ESI", teamBId: "ID_ESTP"),
+  Matchs(id: "8", roundId: "1", sportId: "ID_HANDBALL", gender: Gender.homme, teamAId: "ID_ESI", teamBId: "ID_EP"),
+  Matchs(id: "9", roundId: "1", sportId: "ID_HANDBALL", gender: Gender.dame, teamAId: "ID_ESCAE", teamBId: "ID_ESTP"),
+  Matchs(id: "10", roundId: "1", sportId: "ID_HANDBALL", gender: Gender.homme, teamAId: "ID_ESA", teamBId: "ID_ESMG"),
+  Matchs(id: "11", roundId: "1", sportId: "ID_HANDBALL", gender: Gender.dame, teamAId: "ID_ESI", teamBId: "ID_ESTP"),
 ];
 
 class _Utils {

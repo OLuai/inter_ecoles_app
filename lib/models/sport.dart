@@ -51,7 +51,7 @@ class Sports {
     periodShortName: "set",
   );
   static Sport basketball = Sport(
-    id: "ID_BASKETBAL",
+    id: "ID_BASKETBALL",
     name: "BASKETBALL",
     periodCount: 4,
     periodName: "QUART-TEMPS",
@@ -69,9 +69,9 @@ class Sports {
     switch (id) {
       case "ID_FOOTBALL":
         return Sports.football;
-      case "ID_VOLLEYBALLL":
+      case "ID_VOLLEYBALL":
         return Sports.volleyball;
-      case "ID_BASKETBAL":
+      case "ID_BASKETBALL":
         return Sports.basketball;
       case "ID_HANDBALL":
         return Sports.handball;

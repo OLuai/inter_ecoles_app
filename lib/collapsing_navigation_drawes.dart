@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inter_ecoles_app/collapsing_list_title.dart';
-import 'package:inter_ecoles_app/football.dart';
+import 'package:inter_ecoles_app/sport_page.dart';
 import 'package:inter_ecoles_app/navigation.dart';
 import 'package:inter_ecoles_app/theme.dart';
 
@@ -14,7 +14,7 @@ class _CallapsingNavigationDrawerState
     with SingleTickerProviderStateMixin{
 
   double maxWidth = 220;
-  double minWidth = 70;
+  double minWidth = 60;
   bool isCollapsed = false;
   late AnimationController _animationController;
   late Animation<double> widthAnimation;
@@ -24,15 +24,15 @@ class _CallapsingNavigationDrawerState
   Widget getSportPage(int index) {
     switch (index) {
       case 0:
-        return Football();
+        return SportPage(title: "FootBall",idSport: "ID_FOOTBALL");
       case 1:
-        return Text("BasketBall", style: genderTextStyle,);
+        return SportPage(title: "BasketBall",idSport: "ID_BASKETBALL");
       case 2:
         return Text("VolleyBall", style: genderTextStyle,);
       case 3:
-        return Text("HandBall", style: genderTextStyle,);
+        return SportPage(title: "HandBall",idSport: "ID_HANDBALL");
       default:
-        return Football();
+        return SportPage(title: "FootBall",idSport: "ID_FOOTBALL");
     }
   }
 
@@ -57,11 +57,11 @@ class _CallapsingNavigationDrawerState
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 70.0, right: 5.0),
+          padding: const EdgeInsets.only(left: 60.0),
           child: getSportPage(indexSelectionner),
         ),
         Material(
-        elevation: 80.0,
+        elevation: 60.0,
         child: Container(
           width: widthAnimation.value,
           color: drawerBackgroundColor,
@@ -73,6 +73,7 @@ class _CallapsingNavigationDrawerState
                 animationController: _animationController,
               ),
               const Divider(color: Colors.grey, height: 40.0,),
+              const SizedBox(height: 100.0,),
               Expanded(
                 child: ListView.separated(
                   separatorBuilder: (context, counter){
@@ -104,13 +105,13 @@ class _CallapsingNavigationDrawerState
                   });
                 },
                 child: AnimatedIcon(
-                  icon: AnimatedIcons.close_menu,
+                  icon: AnimatedIcons.list_view,
                   progress: _animationController,
                   color: Colors.white,
-                  size: 42.0,
+                  size: 40.0,
                 ),
               ),
-              const SizedBox(height: 50.0,),
+              const SizedBox(height: 70.0,),
             ],
           ),
         ),),

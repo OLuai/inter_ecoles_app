@@ -8,13 +8,13 @@ class CollapsingListTitle extends StatefulWidget{
   final bool isSelected;
   final VoidCallback? onTap;
 
-  CollapsingListTitle({
+  const CollapsingListTitle({Key? key,
     required this.title,
     required this.assetName,
     required this.animationController,
     this.isSelected = false,
     this.onTap
-  });
+  }) : super(key: key);
 
   @override
   State<CollapsingListTitle> createState() => _CollapsingListTitleState();
@@ -27,7 +27,7 @@ class _CollapsingListTitleState extends State<CollapsingListTitle> {
   @override
   void initState() {
     super.initState();
-    widthAnimation = Tween<double>(begin: 220, end: 70).animate(widget.animationController);
+    widthAnimation = Tween<double>(begin: 220, end: 60).animate(widget.animationController);
     sizedBoxAnimation = Tween<double>(begin: 10, end: 0).animate(widget.animationController);
   }
 
@@ -37,22 +37,22 @@ class _CollapsingListTitleState extends State<CollapsingListTitle> {
       onTap: widget.onTap,
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(16.0)),
+          borderRadius: const BorderRadius.all(Radius.circular(20.0)),
           color: widget.isSelected
-              ? Colors.transparent.withOpacity(0.5)
+              ? Colors.blueAccent.withOpacity(0.5)
               : Colors.transparent,
         ),
         width: widthAnimation.value,
-        margin: EdgeInsets.symmetric(horizontal: 8.0,),
-        padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 8.0),
+        margin: const EdgeInsets.symmetric(horizontal: 8.0,),
+        padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 8.0),
         child: Row(
           children: <Widget>[
             CircleAvatar(
-              radius: 20,
+              radius: 17,
               backgroundImage: AssetImage(widget.assetName),
             ),
             SizedBox(width: sizedBoxAnimation.value,),
-            (widthAnimation.value >= 180)
+            (widthAnimation.value >= 160)
                 ? Text(widget.title, style: widget.isSelected
                 ? listTitleSelectedTextStyle : listTitleDefaultTextStyle,)
                 : Container()
