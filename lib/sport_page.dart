@@ -50,7 +50,9 @@ class _SportPageState extends State<SportPage> {
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      matchView(Gender.dame, idSport),
+                      idSport == "ID_VOLLEYBALL"
+                          ? volleyBallView(Gender.dame, idSport)
+                          : matchView(Gender.dame, idSport),
                     ],
                   ),
                 ],
@@ -65,7 +67,9 @@ class _SportPageState extends State<SportPage> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  matchView(Gender.homme, idSport),
+                  idSport == "ID_VOLLEYBALL"
+                      ? volleyBallView(Gender.homme, idSport)
+                      : matchView(Gender.homme, idSport),
                 ],
               ),
             ),

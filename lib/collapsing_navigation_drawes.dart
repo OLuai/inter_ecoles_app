@@ -28,7 +28,7 @@ class _CallapsingNavigationDrawerState
       case 1:
         return SportPage(title: "BasketBall",idSport: "ID_BASKETBALL");
       case 2:
-        return Text("VolleyBall", style: genderTextStyle,);
+        return SportPage(title: "VolleyBall",idSport: "ID_VOLLEYBALL");
       case 3:
         return SportPage(title: "HandBall",idSport: "ID_HANDBALL");
       default:
