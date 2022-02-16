@@ -44,7 +44,7 @@ class _CollapsingListTitleState extends State<CollapsingListTitle> {
         ),
         width: widthAnimation.value,
         margin: const EdgeInsets.symmetric(horizontal: 8.0,),
-        padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
         child: Row(
           children: <Widget>[
             CircleAvatar(
@@ -52,7 +52,7 @@ class _CollapsingListTitleState extends State<CollapsingListTitle> {
               backgroundImage: AssetImage(widget.assetName),
             ),
             SizedBox(width: sizedBoxAnimation.value,),
-            (widthAnimation.value >= 160)
+            (widthAnimation.value >= 170)
                 ? Text(widget.title, style: widget.isSelected
                 ? listTitleSelectedTextStyle : listTitleDefaultTextStyle,)
                 : Container()

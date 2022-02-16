@@ -167,7 +167,7 @@ class Matchs {
   }
 }
 
-List<Matchs> matchItems =[
+List<dynamic> matchItems =[
   Matchs(id: "0", roundId: "1", sportId: "ID_FOOTBALL", gender: Gender.homme, teamAId: "ID_ESI", teamBId: "ID_EP"),
   Matchs(id: "1", roundId: "1", sportId: "ID_FOOTBALL", gender: Gender.dame, teamAId: "ID_ESCAE", teamBId: "ID_ESTP"),
   Matchs(id: "2", roundId: "1", sportId: "ID_FOOTBALL", gender: Gender.homme, teamAId: "ID_ESA", teamBId: "ID_ESMG"),

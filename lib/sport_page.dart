@@ -28,6 +28,7 @@ class _SportPageState extends State<SportPage> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: drawerBackgroundColor,
         title: Center(
           child: Text(
             widget.title,
@@ -58,7 +59,7 @@ class _SportPageState extends State<SportPage> {
           ),
           Text("${getGender(Gender.homme)} ↓", style: genderTextStyle,), // utiliser les enum de Gender pour plus d'éfficacité
           Container(
-            height: size.height/2.9,
+            height: size.height/2.5,
             padding: const EdgeInsets.only(left: 10.0, right: 8.0),
             margin: const EdgeInsets.all(5),
             child: SingleChildScrollView(

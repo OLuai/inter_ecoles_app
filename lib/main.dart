@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'INP-HB INTER ECOLES',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -35,11 +36,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: drawerBackgroundColor,
-        title: Center(child: Text(widget.title)),
-      ),
       body: Home(),
     );
   }

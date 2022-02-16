@@ -67,17 +67,18 @@ class _CallapsingNavigationDrawerState
           color: drawerBackgroundColor,
           child: Column(
             children: <Widget>[
+              const SizedBox(height: 49.5,),
               CollapsingListTitle(
                 title: "INTER ECOLE",
                 assetName: "assets/images/sports.png",
                 animationController: _animationController,
               ),
-              const Divider(color: Colors.grey, height: 40.0,),
-              const SizedBox(height: 100.0,),
+              const Divider(color: Colors.white70, height: 10.0, thickness: 5,),
+              const SizedBox(height: 147.0,),
               Expanded(
                 child: ListView.separated(
                   separatorBuilder: (context, counter){
-                    return const Divider(height: 12.0,);
+                    return const Divider(height: 15.0,);
                   },
                   itemBuilder: (context, counter) {
                     return CollapsingListTitle(
