@@ -47,10 +47,7 @@ class _CollapsingListTitleState extends State<CollapsingListTitle> {
         padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
         child: Row(
           children: <Widget>[
-            CircleAvatar(
-              radius: 17,
-              backgroundImage: AssetImage(widget.assetName),
-            ),
+            Image.asset(widget.assetName,height: 34,width: 34,),
             SizedBox(width: sizedBoxAnimation.value,),
             (widthAnimation.value >= 170)
                 ? Text(widget.title, style: widget.isSelected

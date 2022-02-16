@@ -86,7 +86,7 @@ class _CallapsingNavigationDrawerState extends State<CallapsingNavigationDrawer>
             child: Column(
               children: <Widget>[
                 const SizedBox(
-                  height: 49.5,
+                  height: 33.5,
                 ),
                 CollapsingListTitle(
                   title: "INTER ECOLE",

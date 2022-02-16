@@ -39,44 +39,33 @@ class _SportPageState extends State<SportPage> {
           ),
         ),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Text(
-            "${getGender(Gender.dame)} ↓",
-            style: genderTextStyle,
-          ), // utiliser les enum de Gender pour plus d'éfficacité
-          Container(
-            height: size.height / 3.2,
-            padding: const EdgeInsets.only(left: 10.0, right: 8.0),
-            margin: const EdgeInsets.all(5),
-            child: SingleChildScrollView(
-              child: Column(
+      body: Container(
+        height: size.height / 2.5,
+        padding: const EdgeInsets.only(left: 10.0, right: 8.0),
+        margin: const EdgeInsets.all(5),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text(
+                "${getGender(Gender.dame)} ↓",
+                style: genderTextStyle,
+              ), // utiliser les enum de Gender pour plus d'éfficacité
+              Column(
+                mainAxisSize: MainAxisSize.max,
                 children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      idSport == "ID_VOLLEYBALL"
-                          ? volleyBallView(
-                              Gender.dame, idSport, widget.currentRoundId)
-                          : matchView(
-                              Gender.dame, idSport, widget.currentRoundId),
-                    ],
-                  ),
+                  idSport == "ID_VOLLEYBALL"
+                      ? volleyBallView(
+                          Gender.dame, idSport, widget.currentRoundId)
+                      : matchView(
+                          Gender.dame, idSport, widget.currentRoundId),
                 ],
               ),
-            ),
-          ),
-          Text(
-            "${getGender(Gender.homme)} ↓",
-            style: genderTextStyle,
-          ), // utiliser les enum de Gender pour plus d'éfficacité
-          Container(
-            height: size.height / 2.5,
-            padding: const EdgeInsets.only(left: 10.0, right: 8.0),
-            margin: const EdgeInsets.all(5),
-            child: SingleChildScrollView(
-              child: Column(
+              Text(
+                "${getGender(Gender.homme)} ↓",
+                style: genderTextStyle,
+              ), // utiliser les enum de Gender pour plus d'éfficacité
+              Column(
                 children: [
                   idSport == "ID_VOLLEYBALL"
                       ? volleyBallView(
@@ -84,9 +73,9 @@ class _SportPageState extends State<SportPage> {
                       : matchView(Gender.homme, idSport, widget.currentRoundId),
                 ],
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

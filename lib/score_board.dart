@@ -76,7 +76,7 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                             )),
                         Text(
                           match.teamA.name,
-                          style: matchTextStyle,
+                          style: const TextStyle(color: Colors.black, fontSize: 13),
                         ),
                       ],
                     ),
@@ -84,11 +84,13 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "${score[match.teamAId]} -:- ${score[match.teamBId]}",
+                          match.status == MatchStatus.waiting
+                              ? "VS"
+                              : "${score[match.teamAId]} -:- ${score[match.teamBId]}",
                           style: matchScoreTextStyle,
                         ),
                         Text(
-                          "1 ${match.sport.periodShortName}",
+                          "${match.period}• ${match.sport.periodShortName}",
                           style: matchTextStyle,
                         ),
                       ],
@@ -105,7 +107,7 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                             )),
                         Text(
                           match.teamB.name,
-                          style: matchTextStyle,
+                          style: const TextStyle(color: Colors.black, fontSize: 13),
                         ),
                       ],
                     ),
@@ -115,6 +117,25 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
             ));
         children.add(element);
       }
+    }
+    if (children == []){
+      Container element = Container(
+          margin: const EdgeInsets.only(top: 3, left: 3, right: 3),
+          padding: const EdgeInsets.all(6),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: const Color.fromRGBO(225, 225, 225, 1),
+          ),
+          child: Column(
+              children: [
+                Text(
+                  "Aucun match n'a été enregistré pour aujourd'hui ☺",
+                  style: matchScoreTextStyle,
+                )
+              ]
+          )
+      );
+      children.add(element);
     }
     return children;
   }
@@ -225,7 +246,7 @@ Widget volleyBallView(Gender genre, String idSport, String currentRoundId) {
                             )),
                         Text(
                           match.teamA.name,
-                          style: matchTextStyle,
+                          style: const TextStyle(color: Colors.black, fontSize: 13),
                         ),
                       ],
                     ),
@@ -233,11 +254,13 @@ Widget volleyBallView(Gender genre, String idSport, String currentRoundId) {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "${score[match.teamAId]} -:- ${score[match.teamBId]}",
+                          match.status == MatchStatus.waiting
+                              ? "VS"
+                              : "${score[match.teamAId]} -:- ${score[match.teamBId]}",
                           style: matchScoreTextStyle,
                         ),
                         Text(
-                          "1 ${match.sport.periodShortName}",
+                          "${match.period}• ${match.sport.periodShortName}",
                           style: matchTextStyle,
                         ),
                       ],
@@ -254,7 +277,7 @@ Widget volleyBallView(Gender genre, String idSport, String currentRoundId) {
                             )),
                         Text(
                           match.teamB.name,
-                          style: matchTextStyle,
+                          style: const TextStyle(color: Colors.black, fontSize: 13),
                         ),
                       ],
                     ),
@@ -264,6 +287,25 @@ Widget volleyBallView(Gender genre, String idSport, String currentRoundId) {
             ));
         children.add(element);
       }
+    }
+    if (children == []){
+      Container element = Container(
+          margin: const EdgeInsets.only(top: 3, left: 3, right: 3),
+          padding: const EdgeInsets.all(6),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            color: const Color.fromRGBO(225, 225, 225, 1),
+          ),
+          child: Column(
+              children: [
+                Text(
+                  "Aucun match n'a été enregistré pour aujourd'hui ☺",
+                  style: matchScoreTextStyle,
+                )
+              ]
+          )
+      );
+      children.add(element);
     }
     return children;
   }
