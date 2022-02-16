@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:inter_ecoles_app/models/gender.dart';
 import 'package:inter_ecoles_app/models/matchs.dart';
@@ -6,146 +6,298 @@ import 'package:inter_ecoles_app/theme.dart';
 
 // pour afficher le score d'un match
 //FootBall
-matchView(Gender genre, String idSport) {
-  List<Widget> children = [];
-  for (Matchs match in matchItems) {
-    if (match.gender == genre && match.sport.id == idSport){
-      var score = match.getScore();
-      Container element = Container(
-          margin: const EdgeInsets.only(top: 3, left: 3, right: 3),
-          padding: const EdgeInsets.all(6),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            color: const Color.fromRGBO(225, 225, 225, 1),
-          ),
-          child:Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      const Text("•", style: TextStyle(color: Colors.red, fontSize: 20.0, fontWeight: FontWeight.w400),),
-                      Text(getMatchStatus(match.status), style: const TextStyle(color: Colors.red, fontSize: 13.0, fontWeight: FontWeight.w400),),
-                    ],
-                  ),
-                  Text("${match.elapsedTime}'", style: const TextStyle(color: Colors.green, fontSize: 15.0, fontWeight: FontWeight.bold),),
-                ],
-              ),
-              const Divider(thickness: 2, height: 12.0, color: Colors.white,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CircleAvatar(
-                          radius: 18,
-                          backgroundColor: Colors.white,
-                          child:CircleAvatar(radius: 15, backgroundImage: AssetImage(match.teamA.logoUrl),)
-                      ),
-                      Text(match.teamA.name, style: matchTextStyle,),
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("${score[match.teamAId]} -:- ${score[match.teamBId]}", style: matchScoreTextStyle,),
-                      Text("1 ${match.sport.periodShortName}", style: matchTextStyle,),
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CircleAvatar(
-                          radius: 18,
-                          backgroundColor: Colors.white,
-                          child: CircleAvatar(radius: 15, backgroundImage: AssetImage(match.teamB.logoUrl),)
-                      ),
-                      Text(match.teamB.name, style: matchTextStyle,),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          )
-      );
-      children.add(element);
+Widget matchView(Gender genre, String idSport, String currentRoundId) {
+  List<Widget> listMatchs(
+    Gender genre,
+    String idSport,
+    List<Matchs> matchItems,
+  ) {
+    List<Widget> children = [];
+    for (Matchs match in matchItems) {
+      if (match.gender == genre && match.sport.id == idSport) {
+        var score = match.getScore();
+        Container element = Container(
+            margin: const EdgeInsets.only(top: 3, left: 3, right: 3),
+            padding: const EdgeInsets.all(6),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: const Color.fromRGBO(225, 225, 225, 1),
+            ),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        const Text(
+                          "•",
+                          style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w400),
+                        ),
+                        Text(
+                          getMatchStatus(match.status),
+                          style: const TextStyle(
+                              color: Colors.red,
+                              fontSize: 13.0,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      "${match.elapsedTime}'",
+                      style: const TextStyle(
+                          color: Colors.green,
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                const Divider(
+                  thickness: 2,
+                  height: 12.0,
+                  color: Colors.white,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CircleAvatar(
+                            radius: 18,
+                            backgroundColor: Colors.white,
+                            child: CircleAvatar(
+                              radius: 15,
+                              backgroundImage: AssetImage(match.teamA.logoUrl),
+                            )),
+                        Text(
+                          match.teamA.name,
+                          style: matchTextStyle,
+                        ),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "${score[match.teamAId]} -:- ${score[match.teamBId]}",
+                          style: matchScoreTextStyle,
+                        ),
+                        Text(
+                          "1 ${match.sport.periodShortName}",
+                          style: matchTextStyle,
+                        ),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CircleAvatar(
+                            radius: 18,
+                            backgroundColor: Colors.white,
+                            child: CircleAvatar(
+                              radius: 15,
+                              backgroundImage: AssetImage(match.teamB.logoUrl),
+                            )),
+                        Text(
+                          match.teamB.name,
+                          style: matchTextStyle,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ));
+        children.add(element);
+      }
     }
+    return children;
   }
-  return SingleChildScrollView(child: Column(crossAxisAlignment: CrossAxisAlignment.start,children: children,));
+
+  String _collectionPath =
+      "Rounds/$currentRoundId/sports/$idSport/${genre.toString()}/matchs/list";
+  CollectionReference _collectionReference = FirebaseFirestore.instance
+      .collection(_collectionPath)
+      .withConverter<Matchs>(
+        fromFirestore: (snapshot, _) => Matchs.fromJson(
+          snapshot.data()!,
+        ),
+        toFirestore: (match, _) => match.toJson(),
+      );
+
+  return StreamBuilder<Object>(
+      stream: _collectionReference.snapshots(),
+      builder: (context, AsyncSnapshot<dynamic> snapshot) {
+        if (snapshot.hasData) {
+          List<QueryDocumentSnapshot<Matchs>> items =
+              snapshot.data.docs as List<QueryDocumentSnapshot<Matchs>>;
+          List<Matchs> matches = items.map((e) => e.data()).toList();
+          matches.sort(
+            (a, b) => a.order.compareTo(
+              b.order,
+            ),
+          );
+          return SingleChildScrollView(
+              child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: listMatchs(genre, idSport, matches),
+          ));
+        } else {
+          return const Center(child: CircularProgressIndicator());
+        }
+      });
 }
 
 // pour afficher le score d'un match
 //VolleyBall
-volleyBallView(Gender genre, String idSport) {
-  List<Widget> children = [];
-  for (Matchs match in matchItems) {
-    if (match.gender == genre && match.sport.id == idSport){
-      var score = match.getScore();
-      Container element = Container(
-          margin: const EdgeInsets.only(top: 3, left: 3, right: 3),
-          padding: const EdgeInsets.all(6),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            color: const Color.fromRGBO(225, 225, 225, 1),
-          ),
-          child:Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      const Text("•", style: TextStyle(color: Colors.red, fontSize: 20.0, fontWeight: FontWeight.w400),),
-                      Text(getMatchStatus(match.status), style: const TextStyle(color: Colors.red, fontSize: 13.0, fontWeight: FontWeight.w400),),
-                    ],
-                  ),
-                  Text("${match.elapsedTime}'", style: const TextStyle(color: Colors.green, fontSize: 15.0, fontWeight: FontWeight.bold),),
-                ],
-              ),
-              const Divider(thickness: 2, height: 12.0, color: Colors.white,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CircleAvatar(
-                          radius: 18,
-                          backgroundColor: Colors.white,
-                          child:CircleAvatar(radius: 15, backgroundImage: AssetImage(match.teamA.logoUrl),)
-                      ),
-                      Text(match.teamA.name, style: matchTextStyle,),
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("${score[match.teamAId]} -:- ${score[match.teamBId]}", style: matchScoreTextStyle,),
-                      Text("1 ${match.sport.periodShortName}", style: matchTextStyle,),
-                    ],
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CircleAvatar(
-                          radius: 18,
-                          backgroundColor: Colors.white,
-                          child: CircleAvatar(radius: 15, backgroundImage: AssetImage(match.teamB.logoUrl),)
-                      ),
-                      Text(match.teamB.name, style: matchTextStyle,),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          )
-      );
-      children.add(element);
+Widget volleyBallView(Gender genre, String idSport, String currentRoundId) {
+  List<Widget> listMatchs(
+    Gender genre,
+    String idSport,
+    List<Matchs> matchItems,
+  ) {
+    List<Widget> children = [];
+    for (Matchs match in matchItems) {
+      if (match.gender == genre && match.sport.id == idSport) {
+        var score = match.getScore();
+        Container element = Container(
+            margin: const EdgeInsets.only(top: 3, left: 3, right: 3),
+            padding: const EdgeInsets.all(6),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              color: const Color.fromRGBO(225, 225, 225, 1),
+            ),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        const Text(
+                          "•",
+                          style: TextStyle(
+                              color: Colors.red,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w400),
+                        ),
+                        Text(
+                          getMatchStatus(match.status),
+                          style: const TextStyle(
+                              color: Colors.red,
+                              fontSize: 13.0,
+                              fontWeight: FontWeight.w400),
+                        ),
+                      ],
+                    ),
+                    Text(
+                      "${match.elapsedTime}'",
+                      style: const TextStyle(
+                          color: Colors.green,
+                          fontSize: 15.0,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+                const Divider(
+                  thickness: 2,
+                  height: 12.0,
+                  color: Colors.white,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CircleAvatar(
+                            radius: 18,
+                            backgroundColor: Colors.white,
+                            child: CircleAvatar(
+                              radius: 15,
+                              backgroundImage: AssetImage(match.teamA.logoUrl),
+                            )),
+                        Text(
+                          match.teamA.name,
+                          style: matchTextStyle,
+                        ),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "${score[match.teamAId]} -:- ${score[match.teamBId]}",
+                          style: matchScoreTextStyle,
+                        ),
+                        Text(
+                          "1 ${match.sport.periodShortName}",
+                          style: matchTextStyle,
+                        ),
+                      ],
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CircleAvatar(
+                            radius: 18,
+                            backgroundColor: Colors.white,
+                            child: CircleAvatar(
+                              radius: 15,
+                              backgroundImage: AssetImage(match.teamB.logoUrl),
+                            )),
+                        Text(
+                          match.teamB.name,
+                          style: matchTextStyle,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ));
+        children.add(element);
+      }
     }
+    return children;
   }
-  return SingleChildScrollView(child: Column(crossAxisAlignment: CrossAxisAlignment.start,children: children,));
+
+  String _collectionPath =
+      "Rounds/$currentRoundId/sports/$idSport/${genre.toString()}/matchs/list";
+  CollectionReference _collectionReference = FirebaseFirestore.instance
+      .collection(_collectionPath)
+      .withConverter<Matchs>(
+        fromFirestore: (snapshot, _) => Matchs.fromJson(
+          snapshot.data()!,
+        ),
+        toFirestore: (match, _) => match.toJson(),
+      );
+
+  return StreamBuilder<Object>(
+      stream: _collectionReference.snapshots(),
+      builder: (context, AsyncSnapshot<dynamic> snapshot) {
+        if (snapshot.hasData) {
+          List<QueryDocumentSnapshot<Matchs>> items =
+              snapshot.data.docs as List<QueryDocumentSnapshot<Matchs>>;
+          List<Matchs> matches = items.map((e) => e.data()).toList();
+          matches.sort(
+            (a, b) => a.order.compareTo(
+              b.order,
+            ),
+          );
+          return SingleChildScrollView(
+              child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: listMatchs(genre, idSport, matches),
+          ));
+        } else {
+          return const Center(child: CircularProgressIndicator());
+        }
+      });
 }
