@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "390071730222",
+    "project_id": "inter-ecoles-app",
+    "storage_bucket": "inter-ecoles-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390071730222:android:4c4266c142db2360621fbf",
+        "android_client_info": {
+          "package_name": "com.doz.inter_ecoles_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390071730222-ucst6dbeuq3bsv5mar6tdsst58t8gc6g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp1SY9Kkc9sryl0PzYQpuTEKcgxYe9Ybs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390071730222-ucst6dbeuq3bsv5mar6tdsst58t8gc6g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:390071730222:android:e928c19c2cbe02a1621fbf",
+        "android_client_info": {
+          "package_name": "com.doz.inter_ecoles_app_admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "390071730222-ucst6dbeuq3bsv5mar6tdsst58t8gc6g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCp1SY9Kkc9sryl0PzYQpuTEKcgxYe9Ybs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "390071730222-ucst6dbeuq3bsv5mar6tdsst58t8gc6g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
