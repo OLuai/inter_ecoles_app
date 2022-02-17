@@ -60,7 +60,7 @@ class _CallapsingNavigationDrawerState extends State<CallapsingNavigationDrawer>
     super.initState();
     _animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 300));
-    widthAnimation = Tween<double>(begin: maxWidth, end: minWidth)
+    widthAnimation = Tween<double>(begin: minWidth, end: maxWidth)
         .animate(_animationController);
   }
 
@@ -88,15 +88,20 @@ class _CallapsingNavigationDrawerState extends State<CallapsingNavigationDrawer>
                 const SizedBox(
                   height: 33.5,
                 ),
-                CollapsingListTitle(
-                  title: "INTER ECOLE",
-                  assetName: "assets/images/sports.png",
-                  animationController: _animationController,
-                ),
-                const Divider(
-                  color: Colors.white70,
-                  height: 10.0,
-                  thickness: 5,
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      isCollapsed = !isCollapsed;
+                      isCollapsed
+                          ? _animationController.forward()
+                          : _animationController.reverse();
+                    });
+                  },
+                  child: CollapsingListTitle(
+                    title: "INTER ECOLE",
+                    assetName: "assets/logos/logoApp.png",
+                    animationController: _animationController,
+                  ),
                 ),
                 const SizedBox(
                   height: 147.0,
@@ -123,25 +128,6 @@ class _CallapsingNavigationDrawerState extends State<CallapsingNavigationDrawer>
                     },
                     itemCount: navigationItems.length,
                   ),
-                ),
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      isCollapsed = !isCollapsed;
-                      isCollapsed
-                          ? _animationController.forward()
-                          : _animationController.reverse();
-                    });
-                  },
-                  child: AnimatedIcon(
-                    icon: AnimatedIcons.list_view,
-                    progress: _animationController,
-                    color: Colors.white,
-                    size: 40.0,
-                  ),
-                ),
-                const SizedBox(
-                  height: 70.0,
                 ),
               ],
             ),

@@ -27,8 +27,8 @@ class _CollapsingListTitleState extends State<CollapsingListTitle> {
   @override
   void initState() {
     super.initState();
-    widthAnimation = Tween<double>(begin: 220, end: 60).animate(widget.animationController);
-    sizedBoxAnimation = Tween<double>(begin: 10, end: 0).animate(widget.animationController);
+    widthAnimation = Tween<double>(begin: 60, end: 220).animate(widget.animationController);
+    sizedBoxAnimation = Tween<double>(begin: 0, end: 10).animate(widget.animationController);
   }
 
   @override

@@ -46,9 +46,14 @@ class _SportPageState extends State<SportPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text(
-                "${getGender(Gender.dame)} ↓",
-                style: genderTextStyle,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    "${getGender(Gender.dame)} ↓",
+                    style: genderTextStyle,
+                  ),
+                ],
               ), // utiliser les enum de Gender pour plus d'éfficacité
               Column(
                 mainAxisSize: MainAxisSize.max,
@@ -60,9 +65,14 @@ class _SportPageState extends State<SportPage> {
                           Gender.dame, idSport, widget.currentRoundId),
                 ],
               ),
-              Text(
-                "${getGender(Gender.homme)} ↓",
-                style: genderTextStyle,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    "${getGender(Gender.homme)} ↓",
+                    style: genderTextStyle,
+                  ),
+                ],
               ), // utiliser les enum de Gender pour plus d'éfficacité
               Column(
                 children: [
