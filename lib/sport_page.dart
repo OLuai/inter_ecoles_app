@@ -40,7 +40,6 @@ class _SportPageState extends State<SportPage> {
         ),
       ),
       body: Container(
-        height: size.height / 2.5,
         padding: const EdgeInsets.only(left: 10.0, right: 8.0),
         margin: const EdgeInsets.all(5),
         child: SingleChildScrollView(
