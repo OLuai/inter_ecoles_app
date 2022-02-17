@@ -33,9 +33,9 @@ class _SportPageState extends State<SportPage> {
           child: Text(
             widget.title,
             style: const TextStyle(
-                fontSize: 50,
+                fontSize: 36,
                 fontStyle: FontStyle.italic,
-                fontWeight: FontWeight.bold),
+            ),
           ),
         ),
       ),
@@ -46,39 +46,34 @@ class _SportPageState extends State<SportPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    "${getGender(Gender.dame)} ↓",
-                    style: genderTextStyle,
-                  ),
-                ],
-              ), // utiliser les enum de Gender pour plus d'éfficacité
+              Text("${getGender(Gender.dame)}", style: genderTextStyle,),
+              /*idSport == "ID_VOLLEYBALL"
+                  ? volleyBallView(Gender.dame, idSport, widget.currentRoundId)==[]
+                    ? Text("")
+                    : Text("${getGender(Gender.dame)} ↓", style: genderTextStyle,)
+                  : matchView(Gender.dame, idSport, widget.currentRoundId)==[]
+                    ? Text("")
+                    : Text("${getGender(Gender.dame)} ↓", style: genderTextStyle,),*/
               Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   idSport == "ID_VOLLEYBALL"
-                      ? volleyBallView(
-                          Gender.dame, idSport, widget.currentRoundId)
-                      : matchView(
-                          Gender.dame, idSport, widget.currentRoundId),
+                      ? volleyBallView(Gender.dame, idSport, widget.currentRoundId)
+                      : matchView(Gender.dame, idSport, widget.currentRoundId),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    "${getGender(Gender.homme)} ↓",
-                    style: genderTextStyle,
-                  ),
-                ],
-              ), // utiliser les enum de Gender pour plus d'éfficacité
+              Text("${getGender(Gender.homme)}", style: genderTextStyle,),
+              /*idSport == "ID_VOLLEYBALL"
+                  ? volleyBallView(Gender.homme, idSport, widget.currentRoundId)==[]
+                    ? Text("")
+                    : Text("${getGender(Gender.homme)} ↓", style: genderTextStyle,)
+                  : matchView(Gender.homme, idSport, widget.currentRoundId)==[]
+                    ? Text("")
+                    : Text("${getGender(Gender.homme)} ↓", style: genderTextStyle,),*/
               Column(
                 children: [
                   idSport == "ID_VOLLEYBALL"
-                      ? volleyBallView(
-                          Gender.homme, idSport, widget.currentRoundId)
+                      ? volleyBallView(Gender.homme, idSport, widget.currentRoundId)
                       : matchView(Gender.homme, idSport, widget.currentRoundId),
                 ],
               ),

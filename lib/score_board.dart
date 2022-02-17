@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:inter_ecoles_app/models/gender.dart';
 import 'package:inter_ecoles_app/models/matchs.dart';
@@ -16,7 +17,9 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
     for (Matchs match in matchItems) {
       if (match.gender == genre && match.sport.id == idSport) {
         var score = match.getScore();
-        Container element = Container(
+        Padding element = Padding(
+          padding: EdgeInsets.only(left: 60.0),
+          child: Container(
             margin: const EdgeInsets.only(top: 3, left: 3, right: 3),
             padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(
@@ -86,9 +89,10 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                         Text(
                           match.status == MatchStatus.waiting
                               ? "VS"
-                              : "${score[match.teamAId]} -:- ${score[match.teamBId]}",
+                              : "${score[match.teamAId]} - ${score[match.teamBId]}",
                           style: matchScoreTextStyle,
                         ),
+                        Text(""),
                         Text(
                           "${match.period}• ${match.sport.periodShortName}",
                           style: matchTextStyle,
@@ -114,28 +118,11 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                   ],
                 ),
               ],
-            ));
+            )
+          )
+        );
         children.add(element);
       }
-    }
-    if (children == []){
-      Container element = Container(
-          margin: const EdgeInsets.only(top: 3, left: 3, right: 3),
-          padding: const EdgeInsets.all(6),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            color: const Color.fromRGBO(225, 225, 225, 1),
-          ),
-          child: Column(
-              children: [
-                Text(
-                  "Aucun match n'a été enregistré pour aujourd'hui ☺",
-                  style: matchScoreTextStyle,
-                )
-              ]
-          )
-      );
-      children.add(element);
     }
     return children;
   }
@@ -186,7 +173,9 @@ Widget volleyBallView(Gender genre, String idSport, String currentRoundId) {
     for (Matchs match in matchItems) {
       if (match.gender == genre && match.sport.id == idSport) {
         var score = match.getScore();
-        Container element = Container(
+        Padding element = Padding(
+          padding: EdgeInsets.only(left: 60.0),
+          child: Container(
             margin: const EdgeInsets.only(top: 3, left: 3, right: 3),
             padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(
@@ -256,9 +245,10 @@ Widget volleyBallView(Gender genre, String idSport, String currentRoundId) {
                         Text(
                           match.status == MatchStatus.waiting
                               ? "VS"
-                              : "${score[match.teamAId]} -:- ${score[match.teamBId]}",
+                              : "${score[match.teamAId]} - ${score[match.teamBId]}",
                           style: matchScoreTextStyle,
                         ),
+                        Text(""),
                         Text(
                           "${match.period}• ${match.sport.periodShortName}",
                           style: matchTextStyle,
@@ -283,29 +273,21 @@ Widget volleyBallView(Gender genre, String idSport, String currentRoundId) {
                     ),
                   ],
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    match.status == MatchStatus.pending
+                        ? Text(
+                            "| ${match.periodsScores![match.teamAId]}-${match.periodsScores![match.teamBId]} ",
+                            style: matchTextStyle,
+                          )
+                        :Text(""),
+                  ],
+                ),
               ],
-            ));
+            )));
         children.add(element);
       }
-    }
-    if (children == []){
-      Container element = Container(
-          margin: const EdgeInsets.only(top: 3, left: 3, right: 3),
-          padding: const EdgeInsets.all(6),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15),
-            color: const Color.fromRGBO(225, 225, 225, 1),
-          ),
-          child: Column(
-              children: [
-                Text(
-                  "Aucun match n'a été enregistré pour aujourd'hui ☺",
-                  style: matchScoreTextStyle,
-                )
-              ]
-          )
-      );
-      children.add(element);
     }
     return children;
   }

@@ -14,15 +14,15 @@ enum MatchStatus {
 String getMatchStatus(MatchStatus status) {
   switch (status) {
     case MatchStatus.waiting:
-      return "waiting";
+      return "en attente";
     case MatchStatus.pending:
-      return "pending";
+      return "en cours";
     case MatchStatus.pause:
       return "pause";
     case MatchStatus.end:
-      return "end";
+      return "Terminer";
     default:
-      return "waiting";
+      return "en attente";
   }
 }
 

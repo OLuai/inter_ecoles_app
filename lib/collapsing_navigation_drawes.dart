@@ -75,7 +75,7 @@ class _CallapsingNavigationDrawerState extends State<CallapsingNavigationDrawer>
     return Stack(
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 60.0),
+          padding: const EdgeInsets.only(left: 0.0),
           child: getSportPage(indexSelectionner),
         ),
         Material(
