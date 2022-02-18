@@ -10,7 +10,7 @@ import 'package:inter_ecoles_app/theme.dart';
 String getMatchScore(Matchs match){
   String score="";
   for(int i=1 ; i<=match.period; i++) {
-    score += "☼► ${match.periodsScores![i]![match.teamAId]}-${match.periodsScores![i]![match.teamBId]} ";
+    score += "  ${match.periodsScores![i]![match.teamAId]}-${match.periodsScores![i]![match.teamBId]}  ";
   }
   return score;
 }
@@ -64,6 +64,17 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                               fontWeight: FontWeight.bold),
                         )
                       :const Center(),
+                  idSport == "ID_VOLLEYBALL"
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              getMatchScore(match),
+                              style: const TextStyle(color: Colors.indigo, fontSize: 13, fontFamily: "Digit"),
+                            )
+                          ],
+                        )
+                      : const Center(),
                 ],
               ),
               const Divider(
@@ -174,17 +185,6 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                   ),
                 ],
               ),
-              idSport == "ID_VOLLEYBALL"
-                  ? Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            getMatchScore(match),
-                            style: const TextStyle(color: Colors.black, fontSize: 13, fontFamily: "Digit"),
-                          )
-                        ],
-                      )
-                  : const Center(),
             ],
           )
         );

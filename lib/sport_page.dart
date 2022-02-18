@@ -23,7 +23,6 @@ class SportPage extends StatefulWidget {
 class _SportPageState extends State<SportPage> {
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
     var idSport = widget.idSport;
 
     return Scaffold(

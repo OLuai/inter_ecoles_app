@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inter_ecoles_app/models/sport.dart';
 import 'package:inter_ecoles_app/screens/list_sports_indiv_screen.dart';
-import 'package:inter_ecoles_app/screens/sport_indiv_winners_screen.dart';
 import 'package:inter_ecoles_app/sport_page.dart';
 import 'package:inter_ecoles_app/theme.dart';
 
@@ -58,9 +57,60 @@ class _FooterState extends State<Footer> {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
-        leading: Image.asset("assets/logos/logoApp.png"),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 10.0),
+          child: Image.asset("assets/logos/logoApp.png"),
+        ),
+        actions: [
+          IconButton(
+              onPressed: (){
+                setState(() {
+                  showAboutDialog(
+                    context: context,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Equipe Dev :",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("GhostScripter"),
+                                Text("Maraboot"),
+                                CircleAvatar(
+                                  radius: 25,
+                                  backgroundImage: AssetImage(
+                                  "assets/images/profil.jpg",
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                    applicationIcon: Image.asset(
+                      "assets/logos/logoApp.png",
+                      width:size.width/2,
+                      height:size.height/2,
+                    ),
+                    applicationName: '☺',
+                  );
+                });
+              },
+              icon: const Icon(Icons.help_outline),
+          ),
+        ],
+        leadingWidth: 40,
         backgroundColor: drawerBackgroundColor,
         centerTitle: true,
         title: Text(
