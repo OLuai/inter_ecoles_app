@@ -4,6 +4,7 @@ class Sport {
   int periodCount;
   String periodName;
   String periodShortName;
+  String logoUrl;
 
   Sport({
     required this.id,
@@ -11,6 +12,7 @@ class Sport {
     this.periodCount = 2,
     this.periodName = 'MI-TEMPS',
     this.periodShortName = 'mt',
+    this.logoUrl = '',
   });
 
   Sport.fromJson(Map<String, Object?> json)
@@ -42,6 +44,7 @@ class Sports {
     periodCount: 2,
     periodName: "MI-TEMPS",
     periodShortName: "mt",
+    logoUrl: "assets/images/football.png",
   );
   static Sport volleyball = Sport(
     id: "ID_VOLLEYBALL",
@@ -49,6 +52,7 @@ class Sports {
     periodCount: 5,
     periodName: "SET",
     periodShortName: "set",
+    logoUrl: "assets/images/volleyball.png",
   );
   static Sport basketball = Sport(
     id: "ID_BASKETBALL",
@@ -56,6 +60,7 @@ class Sports {
     periodCount: 4,
     periodName: "QUART-TEMPS",
     periodShortName: "qt",
+    logoUrl: "assets/images/basketBall.png",
   );
   static Sport handball = Sport(
     id: "ID_HANDBALL",
@@ -63,8 +68,13 @@ class Sports {
     periodCount: 2,
     periodName: "MI-TEMPS",
     periodShortName: "mt",
+    logoUrl: "assets/images/handball.png",
   );
-
+  static Sport individuels = Sport(
+    id: 'ID_SPORTSINDIVIDUELS',
+    name: 'SPORTS INDIVIDUELS',
+    logoUrl: 'assets/images/sports.png',
+  );
   static Sport getSport(String id) {
     switch (id) {
       case "ID_FOOTBALL":
@@ -76,7 +86,7 @@ class Sports {
       case "ID_HANDBALL":
         return Sports.handball;
       default:
-        return Sports.football;
+        return Sports.individuels;
     }
   }
 }
