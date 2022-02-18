@@ -172,6 +172,9 @@ class Matchs {
     int? scoreA = periodsScores![period]![teamAId];
     int? scoreB = periodsScores![period]![teamBId];
 
+    int initialScoreA = scoreA ?? 0;
+    int initialScoreB = scoreB ?? 0;
+
     if (sportId == Sports.volleyball.id) {
       currentGlobalScore = {teamAId: 0, teamBId: 0};
     }
@@ -193,8 +196,8 @@ class Matchs {
     }
 
     Map<String, int?> newScore = {
-      teamAId: scoreA! < 0 ? 0 : scoreA,
-      teamBId: scoreB! < 0 ? 0 : scoreB,
+      teamAId: scoreA! < 0 ? initialScoreA : scoreA,
+      teamBId: scoreB! < 0 ? initialScoreB : scoreB,
     };
 
     periodsScores![period] = newScore;
