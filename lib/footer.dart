@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:inter_ecoles_app/models/sport.dart';
+import 'package:inter_ecoles_app/screens/list_sports_indiv_screen.dart';
 import 'package:inter_ecoles_app/screens/sport_indiv_winners_screen.dart';
 import 'package:inter_ecoles_app/sport_page.dart';
 import 'package:inter_ecoles_app/theme.dart';
 
-class Footer extends StatefulWidget{
+class Footer extends StatefulWidget {
   final String currentRoundId;
   final String title = "INTER ECOLE";
 
@@ -11,7 +13,7 @@ class Footer extends StatefulWidget{
     Key? key,
     required this.currentRoundId,
   }) : super(key: key);
-  
+
   @override
   State<Footer> createState() => _FooterState();
 }
@@ -41,11 +43,11 @@ class _FooterState extends State<Footer> {
             title: "HANDBALL",
             idSport: "ID_HANDBALL",
             currentRoundId: widget.currentRoundId);
-      /*case 4:
-        return SportIndivWinnersScreen(
+      case 4:
+        return ListSportsIndivScreen(
+          sport: Sports.individuels,
           currentRoundId: widget.currentRoundId,
-          sport: null,
-        );*/
+        );
       default:
         return SportPage(
             title: "FOOTBALL",
@@ -53,7 +55,7 @@ class _FooterState extends State<Footer> {
             currentRoundId: widget.currentRoundId);
     }
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,13 +65,13 @@ class _FooterState extends State<Footer> {
         title: Center(
           child: Text(
             widget.title,
-            style: const TextStyle(fontSize: 30,),
+            style: const TextStyle(
+              fontSize: 30,
+            ),
           ),
         ),
       ),
-      body: Center(
-        child: getSportPage(_selectedIndex)
-      ),
+      body: Center(child: getSportPage(_selectedIndex)),
       bottomNavigationBar: BottomNavigationBar(
         iconSize: 25.0,
         selectedFontSize: 14.0,
@@ -80,18 +82,33 @@ class _FooterState extends State<Footer> {
         unselectedItemColor: Colors.white,
         showUnselectedLabels: false,
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.sports_soccer), label: 'football',),
-          BottomNavigationBarItem(icon: Icon(Icons.sports_basketball), label: 'basketball',),
-          BottomNavigationBarItem(icon: Icon(Icons.sports_volleyball), label: 'volleyball',),
-          BottomNavigationBarItem(icon: Icon(Icons.sports_handball), label: 'handball',),
-          BottomNavigationBarItem(icon: Icon(Icons.sports), label: 'sports',),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.sports_soccer),
+            label: 'football',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.sports_basketball),
+            label: 'basketball',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.sports_volleyball),
+            label: 'volleyball',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.sports_handball),
+            label: 'handball',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.sports),
+            label: 'sports',
+          ),
         ],
         currentIndex: _selectedIndex,
-
         onTap: _onItemTapped,
       ),
     );
   }
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;

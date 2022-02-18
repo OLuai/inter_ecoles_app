@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:inter_ecoles_app/models/individual_sport.dart';
 import 'package:inter_ecoles_app/models/sport.dart';
 import 'package:inter_ecoles_app/screens/sport_indiv_winners_screen.dart';
+import 'package:inter_ecoles_app/theme.dart';
 import 'package:inter_ecoles_app/widgets/sports_indiv/sport_indiv_tile.dart';
 
 class ListSportsIndivScreen extends StatelessWidget {
@@ -41,8 +42,17 @@ class ListSportsIndivScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(sport.name),
-        centerTitle: true,
+        toolbarHeight: 25,
+        backgroundColor: subTitleSport,
+        title: Center(
+          child: Text(
+            sport.name,
+            style: const TextStyle(
+              fontSize: 20,
+              fontStyle: FontStyle.italic,
+            ),
+          ),
+        ),
       ),
       body: StreamBuilder(
         stream: _collectionReference.snapshots(),
