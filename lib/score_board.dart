@@ -75,10 +75,10 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  Column(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
+                      Column(
                         children: [
                           CircleAvatar(
                               radius: 21,
@@ -93,19 +93,25 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                                   )
                               )
                           ),
+                          const SizedBox(height: 5.0,),
+                          Text(
+                            match.teamA.name,
+                            style: const TextStyle(color: Colors.black, fontSize: 13),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
                           match.status == MatchStatus.pending || match.status == MatchStatus.pause
                               ?match.sport.id=="ID_VOLLEYBALL"
                               ?Text(
-                                  " ${score[match.teamAId]}",
-                                  style: matchScore,
-                                )
+                            " ${score[match.teamAId]}",
+                            style: matchScore,
+                          )
                               :const Center()
                               :const Center(),
+                          const SizedBox(height: 20.0,),
                         ],
-                      ),
-                      Text(
-                        match.teamA.name,
-                        style: const TextStyle(color: Colors.black, fontSize: 13),
                       ),
                     ],
                   ),
@@ -127,19 +133,23 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                           :const Center(),
                     ],
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  Row(
                     children: [
-                      Row(
+                      Column(
                         children: [
                           match.status == MatchStatus.pending || match.status == MatchStatus.pause
                               ?match.sport.id=="ID_VOLLEYBALL"
                               ?Text(
-                                  " ${score[match.teamAId]}",
+                                  "${score[match.teamBId]} ",
                                   style: matchScore,
                                 )
                               :const Center()
                               :const Center(),
+                          const SizedBox(height: 20.0,),
+                        ],
+                      ),
+                      Column(
+                        children: [
                           CircleAvatar(
                               radius: 21,
                               backgroundColor: gris,
@@ -153,11 +163,12 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                                   )
                               )
                           ),
+                          const SizedBox(height: 5.0,),
+                          Text(
+                            match.teamB.name,
+                            style: const TextStyle(color: Colors.black, fontSize: 13),
+                          ),
                         ],
-                      ),
-                      Text(
-                        match.teamB.name,
-                        style: const TextStyle(color: Colors.black, fontSize: 13),
                       ),
                     ],
                   ),
