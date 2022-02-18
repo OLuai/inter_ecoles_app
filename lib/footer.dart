@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:inter_ecoles_app/screens/sport_indiv_winners_screen.dart';
 import 'package:inter_ecoles_app/sport_page.dart';
+import 'package:inter_ecoles_app/theme.dart';
 
 class Footer extends StatefulWidget{
   final String currentRoundId;
+  final String title = "INTER ECOLE";
+
   const Footer({
     Key? key,
     required this.currentRoundId,
@@ -37,6 +41,11 @@ class _FooterState extends State<Footer> {
             title: "HANDBALL",
             idSport: "ID_HANDBALL",
             currentRoundId: widget.currentRoundId);
+      /*case 4:
+        return SportIndivWinnersScreen(
+          currentRoundId: widget.currentRoundId,
+          sport: null,
+        );*/
       default:
         return SportPage(
             title: "FOOTBALL",
@@ -48,16 +57,28 @@ class _FooterState extends State<Footer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: Image.asset("assets/logos/logoApp.png"),
+        backgroundColor: drawerBackgroundColor,
+        title: Center(
+          child: Text(
+            widget.title,
+            style: const TextStyle(fontSize: 30,),
+          ),
+        ),
+      ),
       body: Center(
         child: getSportPage(_selectedIndex)
       ),
       bottomNavigationBar: BottomNavigationBar(
-        iconSize: 30.0,
+        iconSize: 25.0,
         selectedFontSize: 14.0,
         unselectedFontSize: 12.0,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.black,
+        backgroundColor: drawerBackgroundColor,
+        selectedItemColor: subTitleSport,
         unselectedItemColor: Colors.white,
+        showUnselectedLabels: false,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.sports_soccer), label: 'football',),
           BottomNavigationBarItem(icon: Icon(Icons.sports_basketball), label: 'basketball',),
@@ -66,6 +87,7 @@ class _FooterState extends State<Footer> {
           BottomNavigationBarItem(icon: Icon(Icons.sports), label: 'sports',),
         ],
         currentIndex: _selectedIndex,
+
         onTap: _onItemTapped,
       ),
     );

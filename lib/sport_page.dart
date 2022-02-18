@@ -29,12 +29,13 @@ class _SportPageState extends State<SportPage> {
     return Scaffold(
       backgroundColor: gris,
       appBar: AppBar(
-        backgroundColor: drawerBackgroundColor,
+        toolbarHeight: 25,
+        backgroundColor: subTitleSport,
         title: Center(
           child: Text(
             widget.title,
             style: const TextStyle(
-                fontSize: 30,
+                fontSize: 20,
                 fontStyle: FontStyle.italic,
             ),
           ),
@@ -45,26 +46,24 @@ class _SportPageState extends State<SportPage> {
         margin: const EdgeInsets.all(5),
         child: SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Padding(
                 padding: const EdgeInsets.only(top:8.0, bottom: 8.0),
                 child: Text(getGender(Gender.dame), style: genderTextStyle,),
               ),
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  matchView(Gender.dame, idSport, widget.currentRoundId),
-                ],
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: matchView(Gender.dame, idSport, widget.currentRoundId),
               ),
               Padding(
                 padding: const EdgeInsets.only(top:20.0, bottom: 8.0),
-                child: Text("${getGender(Gender.homme)}", style: genderTextStyle,),
+                child: Text(getGender(Gender.homme), style: genderTextStyle,),
               ),
-              Column(
-                children: [
-                  matchView(Gender.homme, idSport, widget.currentRoundId),
-                ],
+              Padding(
+                padding: const EdgeInsets.only(left: 15.0),
+                child: matchView(Gender.homme, idSport, widget.currentRoundId),
               ),
             ],
           ),

@@ -7,7 +7,7 @@ import 'package:inter_ecoles_app/theme.dart';
 
 
 //VolleyBall
-String getSetScore(Matchs match){
+String getMatchScore(Matchs match){
   String score="";
   for(int i=1 ; i<=match.period; i++) {
     score += "☼► ${match.periodsScores![i]![match.teamAId]}-${match.periodsScores![i]![match.teamBId]} ";
@@ -27,6 +27,11 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
     for (Matchs match in matchItems) {
       if (match.gender == genre && match.sport.id == idSport) {
         var score = match.getScore();
+        Color statusColors = match.status==MatchStatus.pending
+            ?Colors.green
+            :match.status==MatchStatus.end
+              ?Colors.black
+              :Colors.red;
         var element = Container(
           margin: const EdgeInsets.only(top: 3, left: 3, right: 3),
           padding: const EdgeInsets.all(6),
@@ -50,8 +55,8 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                       ),
                       Text(
                         getMatchStatus(match.status),
-                        style: const TextStyle(
-                            color: Colors.red,
+                        style: TextStyle(
+                            color: statusColors,
                             fontSize: 13.0,
                             fontWeight: FontWeight.w400),
                       ),
@@ -78,13 +83,24 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CircleAvatar(
-                          radius: 20,
-                          backgroundColor: gris,
-                          child: CircleAvatar(
-                            radius: 17,
-                            backgroundImage: AssetImage(match.teamA.logoUrl),
-                          )),
+                      Row(
+                        children: [
+                          CircleAvatar(
+                              radius: 20,
+                              backgroundColor: gris,
+                              child: CircleAvatar(
+                                radius: 17,
+                                backgroundImage: AssetImage(match.teamA.logoUrl),
+                              )
+                          ),
+                          match.status == MatchStatus.pending || match.status == MatchStatus.pause
+                              ? Text(
+                                  " ${score[match.teamAId]}",
+                                  style: matchScore,
+                                )
+                              :const Center(),
+                        ],
+                      ),
                       Text(
                         match.teamA.name,
                         style: const TextStyle(color: Colors.black, fontSize: 13),
@@ -97,7 +113,7 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                       Text(
                         match.status == MatchStatus.waiting
                             ? "VS"
-                            : "${score[match.teamAId]} - ${score[match.teamBId]}",
+                            : "${match.periodsScores![match.period]![match.teamAId]} - ${match.periodsScores![match.period]![match.teamBId]}",
                         style: matchScoreTextStyle,
                       ),
                       const Text(""),
@@ -110,13 +126,24 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CircleAvatar(
-                          radius: 20,
-                          backgroundColor: gris,
-                          child: CircleAvatar(
-                            radius: 17,
-                            backgroundImage: AssetImage(match.teamB.logoUrl),
-                          )),
+                      Row(
+                        children: [
+                          match.status == MatchStatus.pending || match.status == MatchStatus.pause
+                              ? Text(
+                                  "${score[match.teamBId]} ",
+                                  style: matchScore,
+                                )
+                              :const Center(),
+                          CircleAvatar(
+                              radius: 20,
+                              backgroundColor: gris,
+                              child: CircleAvatar(
+                                radius: 17,
+                                backgroundImage: AssetImage(match.teamB.logoUrl),
+                              )
+                          ),
+                        ],
+                      ),
                       Text(
                         match.teamB.name,
                         style: const TextStyle(color: Colors.black, fontSize: 13),
@@ -130,13 +157,12 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            getSetScore(match),
+                            getMatchScore(match),
                             style: const TextStyle(color: Colors.black, fontSize: 13, fontFamily: "Digit"),
                           )
-
                         ],
                       )
-                  : const Text(""),
+                  : const Center(),
             ],
           )
         );
