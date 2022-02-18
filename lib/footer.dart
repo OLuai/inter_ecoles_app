@@ -62,12 +62,11 @@ class _FooterState extends State<Footer> {
       appBar: AppBar(
         leading: Image.asset("assets/logos/logoApp.png"),
         backgroundColor: drawerBackgroundColor,
-        title: Center(
-          child: Text(
-            widget.title,
-            style: const TextStyle(
-              fontSize: 30,
-            ),
+        centerTitle: true,
+        title: Text(
+          widget.title,
+          style: const TextStyle(
+            fontSize: 30,
           ),
         ),
       ),
