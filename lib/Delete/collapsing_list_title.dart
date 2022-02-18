@@ -28,7 +28,7 @@ class _CollapsingListTitleState extends State<CollapsingListTitle> {
   void initState() {
     super.initState();
     widthAnimation = Tween<double>(begin: 60, end: 220).animate(widget.animationController);
-    sizedBoxAnimation = Tween<double>(begin: 0, end: 10).animate(widget.animationController);
+    sizedBoxAnimation = Tween<double>(begin: 0, end: 5).animate(widget.animationController);
   }
 
   @override
@@ -43,11 +43,11 @@ class _CollapsingListTitleState extends State<CollapsingListTitle> {
               : Colors.transparent,
         ),
         width: widthAnimation.value,
-        margin: const EdgeInsets.symmetric(horizontal: 8.0,),
-        padding: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
+        margin: const EdgeInsets.symmetric(horizontal: 4.0,),
+        padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
         child: Row(
           children: <Widget>[
-            Image.asset(widget.assetName,height: 34,width: 34,),
+            Image.asset(widget.assetName,height: 42,width: 42,),
             SizedBox(width: sizedBoxAnimation.value,),
             (widthAnimation.value >= 170)
                 ? Text(widget.title, style: widget.isSelected

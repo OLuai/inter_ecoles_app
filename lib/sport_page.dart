@@ -27,13 +27,14 @@ class _SportPageState extends State<SportPage> {
     var idSport = widget.idSport;
 
     return Scaffold(
+      backgroundColor: gris,
       appBar: AppBar(
         backgroundColor: drawerBackgroundColor,
         title: Center(
           child: Text(
             widget.title,
             style: const TextStyle(
-                fontSize: 36,
+                fontSize: 30,
                 fontStyle: FontStyle.italic,
             ),
           ),
@@ -46,35 +47,23 @@ class _SportPageState extends State<SportPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Text("${getGender(Gender.dame)}", style: genderTextStyle,),
-              /*idSport == "ID_VOLLEYBALL"
-                  ? volleyBallView(Gender.dame, idSport, widget.currentRoundId)==[]
-                    ? Text("")
-                    : Text("${getGender(Gender.dame)} ↓", style: genderTextStyle,)
-                  : matchView(Gender.dame, idSport, widget.currentRoundId)==[]
-                    ? Text("")
-                    : Text("${getGender(Gender.dame)} ↓", style: genderTextStyle,),*/
+              Padding(
+                padding: const EdgeInsets.only(top:8.0, bottom: 8.0),
+                child: Text(getGender(Gender.dame), style: genderTextStyle,),
+              ),
               Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
-                  idSport == "ID_VOLLEYBALL"
-                      ? volleyBallView(Gender.dame, idSport, widget.currentRoundId)
-                      : matchView(Gender.dame, idSport, widget.currentRoundId),
+                  matchView(Gender.dame, idSport, widget.currentRoundId),
                 ],
               ),
-              Text("${getGender(Gender.homme)}", style: genderTextStyle,),
-              /*idSport == "ID_VOLLEYBALL"
-                  ? volleyBallView(Gender.homme, idSport, widget.currentRoundId)==[]
-                    ? Text("")
-                    : Text("${getGender(Gender.homme)} ↓", style: genderTextStyle,)
-                  : matchView(Gender.homme, idSport, widget.currentRoundId)==[]
-                    ? Text("")
-                    : Text("${getGender(Gender.homme)} ↓", style: genderTextStyle,),*/
+              Padding(
+                padding: const EdgeInsets.only(top:20.0, bottom: 8.0),
+                child: Text("${getGender(Gender.homme)}", style: genderTextStyle,),
+              ),
               Column(
                 children: [
-                  idSport == "ID_VOLLEYBALL"
-                      ? volleyBallView(Gender.homme, idSport, widget.currentRoundId)
-                      : matchView(Gender.homme, idSport, widget.currentRoundId),
+                  matchView(Gender.homme, idSport, widget.currentRoundId),
                 ],
               ),
             ],

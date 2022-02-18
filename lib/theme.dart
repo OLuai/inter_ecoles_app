@@ -8,3 +8,4 @@ TextStyle matchScoreTextStyle = const TextStyle(color: Colors.black, fontSize: 2
 
 Color selectedColor = const Color(0xFF4AC8EA);
 Color drawerBackgroundColor = const Color(0xFF5372E3);
+Color gris = const Color.fromRGBO(225, 225, 225, 1);
