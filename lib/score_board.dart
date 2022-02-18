@@ -28,10 +28,10 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
       if (match.gender == genre && match.sport.id == idSport) {
         var score = match.getScore();
         Color statusColors = match.status==MatchStatus.pending
-            ?Colors.green
+            ?Colors.red
             :match.status==MatchStatus.end
               ?Colors.black
-              :Colors.red;
+              :Colors.green;
         var element = Container(
           margin: const EdgeInsets.only(top: 3, left: 3, right: 3),
           padding: const EdgeInsets.all(6),
@@ -46,13 +46,6 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                 children: [
                   Row(
                     children: [
-                      const Text(
-                        "•",
-                        style: TextStyle(
-                            color: Colors.red,
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.w400),
-                      ),
                       Text(
                         getMatchStatus(match.status),
                         style: TextStyle(
@@ -62,13 +55,15 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                       ),
                     ],
                   ),
-                  Text(
-                    "${match.elapsedTime}'",
-                    style: const TextStyle(
-                        color: Colors.green,
-                        fontSize: 15.0,
-                        fontWeight: FontWeight.bold),
-                  ),
+                  match.status==MatchStatus.pending && match.sport.id!="ID_VOLLEYBALL"
+                      ?Text(
+                          "${match.elapsedTime}'",
+                          style: const TextStyle(
+                              color: Colors.green,
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.bold),
+                        )
+                      :const Center(),
                 ],
               ),
               const Divider(
@@ -86,18 +81,25 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                       Row(
                         children: [
                           CircleAvatar(
-                              radius: 20,
+                              radius: 21,
                               backgroundColor: gris,
                               child: CircleAvatar(
-                                radius: 17,
-                                backgroundImage: AssetImage(match.teamA.logoUrl),
+                                  backgroundColor: Colors.white,
+                                  radius: 19,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.transparent,
+                                    radius: 17,
+                                    child: Image.asset(match.teamA.logoUrl),
+                                  )
                               )
                           ),
                           match.status == MatchStatus.pending || match.status == MatchStatus.pause
-                              ? Text(
+                              ?match.sport.id=="ID_VOLLEYBALL"
+                              ?Text(
                                   " ${score[match.teamAId]}",
                                   style: matchScore,
                                 )
+                              :const Center()
                               :const Center(),
                         ],
                       ),
@@ -117,10 +119,12 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                         style: matchScoreTextStyle,
                       ),
                       const Text(""),
-                      Text(
-                        "${match.period}• ${match.sport.periodShortName}",
-                        style: matchTextStyle,
-                      ),
+                      match.status==MatchStatus.pending
+                          ?Text(
+                              "${match.period}• ${match.sport.periodShortName}",
+                              style: matchTextStyle,
+                            )
+                          :const Center(),
                     ],
                   ),
                   Column(
@@ -129,17 +133,24 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                       Row(
                         children: [
                           match.status == MatchStatus.pending || match.status == MatchStatus.pause
-                              ? Text(
-                                  "${score[match.teamBId]} ",
+                              ?match.sport.id=="ID_VOLLEYBALL"
+                              ?Text(
+                                  " ${score[match.teamAId]}",
                                   style: matchScore,
                                 )
+                              :const Center()
                               :const Center(),
                           CircleAvatar(
-                              radius: 20,
+                              radius: 21,
                               backgroundColor: gris,
                               child: CircleAvatar(
-                                radius: 17,
-                                backgroundImage: AssetImage(match.teamB.logoUrl),
+                                backgroundColor: Colors.white,
+                                radius: 19,
+                                  child: CircleAvatar(
+                                    backgroundColor: Colors.transparent,
+                                    radius: 17,
+                                    child: Image.asset(match.teamB.logoUrl),
+                                  )
                               )
                           ),
                         ],

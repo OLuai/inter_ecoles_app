@@ -20,7 +20,7 @@ String getMatchStatus(MatchStatus status) {
     case MatchStatus.pause:
       return "pause";
     case MatchStatus.end:
-      return "Terminer";
+      return "Terminé";
     default:
       return "en attente";
   }
