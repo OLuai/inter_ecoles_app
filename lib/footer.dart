@@ -92,6 +92,7 @@ class _FooterState extends State<Footer> {
                                   "assets/images/profil.jpg",
                                   ),
                                 ),
+                                Text("en collaboration avec le pôle sport du BDE"),
                               ],
                             ),
                           ),
