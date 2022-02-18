@@ -59,10 +59,10 @@ class _FooterState extends State<Footer> {
         backgroundColor: Colors.black,
         unselectedItemColor: Colors.white,
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.sports_handball), label: 'handball',),
-          BottomNavigationBarItem(icon: Icon(Icons.sports_football), label: 'football',),
-          BottomNavigationBarItem(icon: Icon(Icons.sports_volleyball), label: 'volleyball',),
+          BottomNavigationBarItem(icon: Icon(Icons.sports_soccer), label: 'football',),
           BottomNavigationBarItem(icon: Icon(Icons.sports_basketball), label: 'basketball',),
+          BottomNavigationBarItem(icon: Icon(Icons.sports_volleyball), label: 'volleyball',),
+          BottomNavigationBarItem(icon: Icon(Icons.sports_handball), label: 'handball',),
           BottomNavigationBarItem(icon: Icon(Icons.sports), label: 'sports',),
         ],
         currentIndex: _selectedIndex,
