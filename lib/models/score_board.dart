@@ -31,7 +31,7 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
             ?Colors.red
             :match.status==MatchStatus.end
               ?Colors.black
-              :Colors.green;
+              :Colors.orange;
         var element = Padding(
             padding: const EdgeInsets.only(bottom: 6.0),
             child: Container(
@@ -46,17 +46,15 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        children: [
-                          Text(
-                            getMatchStatus(match.status),
-                            style: TextStyle(
-                                color: statusColors,
-                                fontSize: 13.0,
-                                fontWeight: FontWeight.w400),
-                          ),
-                        ],
-                      ),
+                      match.status!=MatchStatus.waiting
+                          ? Text(
+                              getMatchStatus(match.status),
+                              style: TextStyle(
+                                  color: statusColors,
+                                  fontSize: 13.0,
+                                  fontWeight: FontWeight.w400),
+                            )
+                          : const Center(),
                       match.status==MatchStatus.pending && match.sport.id!="ID_VOLLEYBALL"
                           ?Text(
                               "${match.elapsedTime}'",

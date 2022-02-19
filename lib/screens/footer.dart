@@ -69,42 +69,58 @@ class _FooterState extends State<Footer> {
           IconButton(
               onPressed: (){
                 setState(() {
-                  showAboutDialog(
+                  showDialog(
                     context: context,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Equipe Dev :",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("GhostScripter"),
-                                Text("Maraboot"),
-                                CircleAvatar(
-                                  radius: 25,
-                                  backgroundImage: AssetImage(
-                                  "assets/images/profil.jpg",
+                    builder: (context)=> AlertDialog(
+                      backgroundColor: selectedColor,
+                      scrollable: false,
+                      title: const Text("Auteurs :", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                      content: SizedBox(
+                        height: size.height/2.5,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 15.0,),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: const [
+                                      Text("@GhostScripte"),
+                                      Text("@MaraBoot👹"),
+                                      Text("@Kar^Tch☠"),
+                                    ],
                                   ),
-                                ),
-                                Text("en collaboration avec le pôle sport du BDE"),
-                              ],
+                                  const CircleAvatar(
+                                    radius: 40,
+                                    backgroundImage: AssetImage("assets/images/profil.jpg"),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      )
-                    ],
-                    applicationIcon: Image.asset(
-                      "assets/logos/logoApp.png",
-                      width:size.width/2,
-                      height:size.height/2,
+                            const Text("Détails :", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                            const SizedBox(height: 15.0,),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                CircleAvatar(
+                                  backgroundColor: Colors.transparent,
+                                  radius: 40,
+                                  child: Image.asset("assets/logos/logoApp.png"),
+                                ),
+                                Container(
+                                  width: size.width/2.5,
+                                  child: Text("Projet publié avec la collaboration du pôle sport du Bureau des Etudiants (BDE) de l'INP-HB "),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
                     ),
-                    applicationName: '☺',
                   );
                 });
               },
