@@ -131,7 +131,9 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                           Text(
                             match.status == MatchStatus.waiting
                                 ? "VS"
-                                : "${match.periodsScores![match.period]![match.teamAId]} - ${match.periodsScores![match.period]![match.teamBId]}",
+                                : match.sport.id=="ID_VOLLEYBALL"
+                                ? "${match.periodsScores![match.period]![match.teamAId]} - ${match.periodsScores![match.period]![match.teamBId]}"
+                                : "${score[match.teamAId]} - ${score[match.teamBId]}",
                             style: matchScoreTextStyle,
                           ),
                           const Text(""),
