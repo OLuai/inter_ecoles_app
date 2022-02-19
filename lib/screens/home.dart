@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inter_ecoles_app/footer.dart';
+import 'package:inter_ecoles_app/screens/footer.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key, required this.currentRoundId}) : super(key: key);

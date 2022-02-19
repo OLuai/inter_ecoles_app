@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inter_ecoles_app/models/sport.dart';
 import 'package:inter_ecoles_app/screens/list_sports_indiv_screen.dart';
-import 'package:inter_ecoles_app/sport_page.dart';
+import 'package:inter_ecoles_app/models/sport_page.dart';
 import 'package:inter_ecoles_app/theme.dart';
 
 class Footer extends StatefulWidget {

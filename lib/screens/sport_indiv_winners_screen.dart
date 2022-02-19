@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:inter_ecoles_app/models/individual_sport.dart';
 import 'package:inter_ecoles_app/models/sport.dart';
 import 'package:inter_ecoles_app/models/winner.dart';
+import 'package:inter_ecoles_app/theme.dart';
 import 'package:inter_ecoles_app/widgets/sports_indiv/winner_tile.dart';
 
 class SportIndivWinnersScreen extends StatefulWidget {
@@ -37,8 +38,11 @@ class _SportIndivWinnersScreenState extends State<SportIndivWinnersScreen> {
     }
 
     return Scaffold(
+      backgroundColor: gris,
       appBar: AppBar(
-        title: Text(widget.sport.name),
+        toolbarHeight: 40,
+        backgroundColor: subTitleSport,
+        title: Text(widget.sport.name,),
         centerTitle: true,
       ),
       body: StreamBuilder<Object>(

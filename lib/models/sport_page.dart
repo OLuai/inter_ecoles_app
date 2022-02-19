@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:inter_ecoles_app/models/gender.dart';
-import 'package:inter_ecoles_app/score_board.dart';
+import 'package:inter_ecoles_app/models/score_board.dart';
 import 'package:inter_ecoles_app/theme.dart';
 
 class SportPage extends StatefulWidget {

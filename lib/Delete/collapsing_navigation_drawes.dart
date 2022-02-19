@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inter_ecoles_app/Delete/collapsing_list_title.dart';
-import 'package:inter_ecoles_app/sport_page.dart';
+import 'package:inter_ecoles_app/models/sport_page.dart';
 import 'package:inter_ecoles_app/Delete/navigation.dart';
 import 'package:inter_ecoles_app/theme.dart';
 
