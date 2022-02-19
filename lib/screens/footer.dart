@@ -90,7 +90,7 @@ class _FooterState extends State<Footer> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 SizedBox(
-                                  width: size.width/1.5,
+                                  width: size.width/1.6,
                                   child: const Text(
                                     "Projet publié avec la collaboration du pôle sport du Bureau des Etudiants (BDE) de l'INP-HB ",
                                     textAlign: TextAlign.justify,
