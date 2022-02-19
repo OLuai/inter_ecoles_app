@@ -37,15 +37,8 @@ class _SportIndivWinnersScreenState extends State<SportIndivWinnersScreen> {
       _collectionReference.doc(winner.id).set(winner);
     }
 
-    return Scaffold(
-      backgroundColor: gris,
-      appBar: AppBar(
-        toolbarHeight: 40,
-        backgroundColor: subTitleSport,
-        title: Text(widget.sport.name,),
-        centerTitle: true,
-      ),
-      body: StreamBuilder<Object>(
+    return Container(
+      child: StreamBuilder<Object>(
           stream: _collectionReference.snapshots(),
           builder: (context, AsyncSnapshot<dynamic> snapshot) {
             if (snapshot.hasData) {

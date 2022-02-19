@@ -28,7 +28,7 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
       if (match.gender == genre && match.sport.id == idSport) {
         var score = match.getScore();
         Color statusColors = match.status==MatchStatus.pending
-            ?Colors.red
+            ?Colors.green
             :match.status==MatchStatus.end
               ?Colors.black
               :Colors.orange;
@@ -63,8 +63,7 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.bold),
                             )
-                          :const Center(),
-                      idSport == "ID_VOLLEYBALL"
+                          :match.sport.id=="ID_VOLLEYBALL"
                           ? Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -136,9 +135,9 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                             style: matchScoreTextStyle,
                           ),
                           const Text(""),
-                          match.status==MatchStatus.pending
+                          match.status==MatchStatus.pending || match.status==MatchStatus.pause
                               ?Text(
-                                  "${match.period}• ${match.sport.periodShortName}",
+                                  "${match.period}• ${match.sport.periodName}",
                                   style: matchTextStyle,
                                 )
                               :const Center(),

@@ -10,13 +10,13 @@ Widget WinnerTile({
       "${winner.rank.toString()}.",
       style: const TextStyle(
         fontWeight: FontWeight.bold,
-        fontSize: 25,
+        fontSize: 18,
       ),
     ),
     title: Text(
       winner.fullName,
       style: const TextStyle(
-        fontSize: 25,
+        fontSize: 18,
       ),
     ),
     trailing: Row(

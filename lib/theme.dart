@@ -11,3 +11,4 @@ Color selectedColor = const Color(0xFF4AC8EA);
 Color drawerBackgroundColor = const Color(0xFF767569);
 Color gris = const Color.fromRGBO(225, 225, 225, 1);
 Color subTitleSport = const Color(0xFF45D245);
+Color dialogColor = Colors.white;

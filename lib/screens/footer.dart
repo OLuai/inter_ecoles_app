@@ -72,14 +72,35 @@ class _FooterState extends State<Footer> {
                   showDialog(
                     context: context,
                     builder: (context)=> AlertDialog(
-                      backgroundColor: selectedColor,
+                      backgroundColor: dialogColor,
                       scrollable: false,
-                      title: const Text("Auteurs :", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                      title: CircleAvatar(
+                        backgroundColor: Colors.transparent,
+                        radius: 40,
+                        child: Image.asset("assets/logos/logoApp.png"),
+                      ),
                       content: SizedBox(
+                        width: double.infinity,
                         height: size.height/2.5,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: size.width/1.5,
+                                  child: const Text(
+                                    "Projet publié avec la collaboration du pôle sport du Bureau des Etudiants (BDE) de l'INP-HB ",
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 15.0,),
+                            const Text("Auteurs :", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                            const SizedBox(height: 15.0,),
                             Padding(
                               padding: const EdgeInsets.only(left: 15.0,),
                               child: Row(
@@ -89,34 +110,19 @@ class _FooterState extends State<Footer> {
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: const [
-                                      Text("@GhostScripte"),
-                                      Text("@MaraBoot👹"),
                                       Text("@Kar^Tch☠"),
+                                      Text("@GhostScripter"),
+                                      Text("@MaraBoot👹"),
                                     ],
-                                  ),
-                                  const CircleAvatar(
-                                    radius: 40,
-                                    backgroundImage: AssetImage("assets/images/profil.jpg"),
                                   ),
                                 ],
                               ),
                             ),
-                            const Text("Détails :", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-                            const SizedBox(height: 15.0,),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                CircleAvatar(
-                                  backgroundColor: Colors.transparent,
-                                  radius: 40,
-                                  child: Image.asset("assets/logos/logoApp.png"),
-                                ),
-                                Container(
-                                  width: size.width/2.5,
-                                  child: Text("Projet publié avec la collaboration du pôle sport du Bureau des Etudiants (BDE) de l'INP-HB "),
-                                ),
-                              ],
-                            )
+                            const SizedBox(height: 40.0,),
+                            SizedBox(
+                              width: size.width/1.5,
+                              child: const Text("zie.traore18@inphb.ci", textAlign: TextAlign.right,),
+                            ),
                           ],
                         ),
                       ),
@@ -165,8 +171,8 @@ class _FooterState extends State<Footer> {
             label: 'handball',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.sports),
-            label: 'sports',
+            icon: Icon(Icons.military_tech),
+            label: 'sports indiv',
           ),
         ],
         currentIndex: _selectedIndex,
