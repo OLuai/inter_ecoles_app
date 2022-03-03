@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-TextStyle listTitleDefaultTextStyle = const TextStyle(color: Colors.white70, fontSize: 17.0, fontWeight: FontWeight.w600);
-TextStyle listTitleSelectedTextStyle = const TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.w600);
+//TextStyle listTitleDefaultTextStyle = const TextStyle(color: Colors.white70, fontSize: 17.0, fontWeight: FontWeight.w600);
+//TextStyle listTitleSelectedTextStyle = const TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.w600);
 TextStyle genderTextStyle = const TextStyle(color: Colors.indigo, fontSize: 20.0, fontWeight: FontWeight.w600);
 TextStyle matchTextStyle = const TextStyle(color: Colors.red, fontSize: 13);
 TextStyle matchScore = const TextStyle(color: Colors.red, fontFamily: "Digit", fontSize: 20);
 TextStyle matchScoreTextStyle = const TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.normal, fontFamily: "Digit");
+TextStyle timeStile = const TextStyle(color: Color(0xFF000000), fontSize: 13);
 
 Color selectedColor = const Color(0xFF4AC8EA);
 Color drawerBackgroundColor = const Color(0xFF767569);

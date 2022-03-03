@@ -54,8 +54,8 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                                   fontSize: 13.0,
                                   fontWeight: FontWeight.w400),
                             )
-                          : const Center(),
-                      match.status==MatchStatus.pending && match.sport.id!="ID_VOLLEYBALL"
+                          : const SizedBox(),
+                      /*match.status==MatchStatus.pending && match.sport.id!="ID_VOLLEYBALL"
                           ?Text(
                               "${match.elapsedTime}'",
                               style: const TextStyle(
@@ -63,7 +63,7 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                                   fontSize: 15.0,
                                   fontWeight: FontWeight.bold),
                             )
-                          :match.sport.id=="ID_VOLLEYBALL"
+                          :*/match.sport.id=="ID_VOLLEYBALL"
                           ? Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -73,7 +73,7 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                                 )
                               ],
                             )
-                          : const Center(),
+                          : const SizedBox(),
                     ],
                   ),
                   const Divider(
@@ -118,8 +118,8 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                                 " ${score[match.teamAId]}",
                                 style: matchScore,
                               )
-                                  :const Center()
-                                  :const Center(),
+                                  :const SizedBox()
+                                  :const SizedBox(),
                               const SizedBox(height: 20.0,),
                             ],
                           ),
@@ -132,17 +132,19 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                             match.status == MatchStatus.waiting
                                 ? "VS"
                                 : match.sport.id=="ID_VOLLEYBALL"
-                                ? "${match.periodsScores![match.period]![match.teamAId]} - ${match.periodsScores![match.period]![match.teamBId]}"
+                                ? match.status == MatchStatus.end
+                                ? "${score[match.teamAId]} - ${score[match.teamBId]}"
+                                : "${match.periodsScores![match.period]![match.teamAId]} - ${match.periodsScores![match.period]![match.teamBId]}"
                                 : "${score[match.teamAId]} - ${score[match.teamBId]}",
                             style: matchScoreTextStyle,
                           ),
-                          const Text(""),
+                          const SizedBox(height: 20.0,),
                           match.status==MatchStatus.pending || match.status==MatchStatus.pause
                               ?Text(
                                   "${match.period}• ${match.sport.periodName}",
                                   style: matchTextStyle,
                                 )
-                              :const Center(),
+                              :const SizedBox(),
                         ],
                       ),
                       Row(
@@ -155,8 +157,8 @@ Widget matchView(Gender genre, String idSport, String currentRoundId) {
                                       "${score[match.teamBId]} ",
                                       style: matchScore,
                                     )
-                                  :const Center()
-                                  :const Center(),
+                                  :const SizedBox()
+                                  :const SizedBox(),
                               const SizedBox(height: 20.0,),
                             ],
                           ),

@@ -6,7 +6,7 @@ import 'package:inter_ecoles_app/theme.dart';
 
 class Footer extends StatefulWidget {
   final String currentRoundId;
-  final String title = "INTER ECOLE";
+  final String title = "INTER ECOLES";
 
   const Footer({
     Key? key,
@@ -91,9 +91,20 @@ class _FooterState extends State<Footer> {
                               children: [
                                 SizedBox(
                                   width: size.width/1.6,
-                                  child: const Text(
-                                    "Projet publié avec la collaboration du pôle sport du Bureau des Etudiants (BDE) de l'INP-HB ",
-                                    textAlign: TextAlign.justify,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: const [
+                                      Text(
+                                        "Projet réalisé avec la collaboration du pôle sport du Bureau des Etudiants (BDE) de l'INP-HB ",
+                                        textAlign: TextAlign.justify,
+                                      ),
+                                      Text(
+                                        "version: 1.1",
+                                        textAlign: TextAlign.start,
+                                        style: TextStyle(color: Color(0xFF45D245)),
+                                      )
+                                    ],
                                   ),
                                 ),
                               ],
