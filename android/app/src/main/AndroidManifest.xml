@@ -2,7 +2,7 @@
     package="com.doz.inter_ecoles_app">
         <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="Inter Ecole"
+        android:label="Inter Ecoles"
         android:name="${applicationName}"
         android:icon="@mipmap/luncher_icon">
         <activity
